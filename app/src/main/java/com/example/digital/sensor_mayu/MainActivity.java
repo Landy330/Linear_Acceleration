@@ -20,16 +20,12 @@ public class MainActivity extends AppCompatActivity {
     public TextView tvshow;
     public SensorManager sensorManager;
     public Sensor ssrlin;
-    public boolean st = false;      // st = true --> work
-    public boolean ps = false;      // ps = true ---> stop
+    public boolean st = false;      // st == true --> work，boolean variable of the left button
+    public boolean ps = false;      // ps == true ---> stop,，boolean variable of the right button
 
     public float xacc = 0;
     public float yacc = 0;
     public float zacc = 0;
-//    public String linacc = "linear acceleration: \n";
-//    public String x = "x acc:" ;
-//    public String y = "y acc:";
-//    public String z = "z acc:";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,7 +169,6 @@ public class MainActivity extends AppCompatActivity {
         string += "ondestroy";
         status.setText(string);
     }
-
 
 
 
