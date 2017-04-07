@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    public Button btnlin;
-    public Button btnstop;
+    public Button btnlin;       // start - stop
+    public Button btnstop;      // go on - pause
     public String string = "status: ";
     public TextView status;
     public TextView tvshow;
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             if(st){
                 if (sensorManager == null){
                     sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-                    ssrlin = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
+                    ssrlin = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);   // 注册
                     sensorManager.registerListener(sensorEventListener,ssrlin,SensorManager.SENSOR_DELAY_NORMAL);
                     string += "is_on ";
                 }
