@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         btnstop = (Button) findViewById(R.id.stop);
 
         sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
-        ssrlin = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
+        ssrlin = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
         btnlin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,11 +61,6 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         string += "onstart ";
         status.setText(string);
-//        if(st) {
-//            sensorManager.registerListener(sensorEventListener,ssrlin,SensorManager.SENSOR_DELAY_NORMAL);
-//            string += "is_on ";
-//            status.setText(string);
-//        }
     }
 
     @Override
@@ -86,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             if(st){
                 if (sensorManager == null){
                     sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-                    ssrlin = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);   // 注册
+                    ssrlin = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);   // 注册
                     sensorManager.registerListener(sensorEventListener,ssrlin,SensorManager.SENSOR_DELAY_NORMAL);
                     string += "is_on ";
                 }
@@ -121,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 });
 
                 if(event_lin.sensor == null)    return;
-                if(event_lin.sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION){
+                if(event_lin.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
                     if(!ps){        // "!ps" means "working"
                         xacc = event_lin.values[0];     // 更新数据
                         yacc = event_lin.values[1];
