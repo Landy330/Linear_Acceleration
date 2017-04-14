@@ -121,11 +121,37 @@ public class MainActivity extends AppCompatActivity {
                         xacc = event_lin.values[0];     // 更新数据
                         yacc = event_lin.values[1];
                         zacc = event_lin.values[2];
+               //store data         
+                    x2 = x2 + xacc + "\n";
+                    y2 = y2 + yacc + "\n";
+                    z2 = z2 + zacc + "\n";
+                    String str = Environment.getExternalStorageDirectory() + File.separator + "Group6.txt";
+                    File file = new File(str);//创建一个文件
+
+
+                    String date=sdf.format(new Date());//时间
+                    try{
+                        if(!file.exists()){
+                            file.createNewFile();
+                        }
+                        FileWriter fw = new FileWriter(file,true);
+                        fw.write(date+"\n");
+                        fw.write(x2);
+                        fw.write(y2);
+                        fw.write(z2+"\n");
+                        fw.flush();
+                        fw.close();
+                        string += "!!!!! ";
+                        status.setText(string);
+                    } catch (IOException e){
+                        e.printStackTrace();
+                    }
                     }
                     x = x + xacc + "\n";
                     y = y + yacc + "\n";
                     z = z + zacc + "\n";
                     tvshow.setText(linacc + x + y + z);
+                    
                 }
 
              }
