@@ -125,7 +125,10 @@ public class MainActivity extends AppCompatActivity {
                     x = x + xacc + "\n";
                     y = y + yacc + "\n";
                     z = z + zacc + "\n";
-                    tvshow.setText(linacc + x + y + z);
+                    float a = xacc*xacc + yacc*yacc + zacc*zacc;
+                    double b = Math.sqrt(a);
+                    String c = b + "\n";
+                    tvshow.setText(linacc + x + y + z + "求模： " + c);
                 }
 
              }
