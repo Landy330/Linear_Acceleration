@@ -150,8 +150,6 @@ public class MainActivity extends AppCompatActivity {
                     x = x + xacc + "\n";
                     y = y + yacc + "\n";
                     z = z + zacc + "\n";
-                    tvshow.setText(linacc + x + y + z);
-                    
                 }
 
              }
