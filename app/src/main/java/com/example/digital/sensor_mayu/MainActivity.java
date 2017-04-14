@@ -118,8 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 String x2 = "x acc:" ;
                 String y2 = "y acc:";
                 String z2 = "z acc:";
-                SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
-
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
 
                 btnstop.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -135,23 +134,23 @@ public class MainActivity extends AppCompatActivity {
                         yacc = event_lin.values[1];
                         zacc = event_lin.values[2];
                         
-                         //store data
+                        //store data
                         x2 = x2 + xacc + "\n";
                         y2 = y2 + yacc + "\n";
                         z2 = z2 + zacc + "\n";
                         String str = Environment.getExternalStorageDirectory() + File.separator + "Group6.txt";
                         File file = new File(str);//创建一个文件
-                        String date=sdf.format(new Date());//时间
+                        String date = sdf.format(new Date());//时间
 
                         try{
                             if(!file.exists()){
                                 file.createNewFile();
                             }
                             FileWriter fw = new FileWriter(file,true);
-                            fw.write(date+"\n");
+                            fw.write(date + "\n");
                             fw.write(x2);
                             fw.write(y2);
-                            fw.write(z2+"\n");
+                            fw.write(z2 + "\n");
                             fw.flush();
                             fw.close();
                             string += "!!!!! ";
