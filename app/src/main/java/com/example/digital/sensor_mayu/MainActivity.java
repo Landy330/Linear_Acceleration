@@ -11,6 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
     public Button btnlin;       // start - stop
@@ -107,6 +113,12 @@ public class MainActivity extends AppCompatActivity {
                 String x = "x acc:" ;
                 String y = "y acc:";
                 String z = "z acc:";
+                
+                String x2 = "x acc:" ;
+                String y2 = "y acc:";
+                String z2 = "z acc:";
+                SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
+
 
                 btnstop.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -121,15 +133,15 @@ public class MainActivity extends AppCompatActivity {
                         xacc = event_lin.values[0];     // 更新数据
                         yacc = event_lin.values[1];
                         zacc = event_lin.values[2];
+                        
                //store data         
                     x2 = x2 + xacc + "\n";
                     y2 = y2 + yacc + "\n";
                     z2 = z2 + zacc + "\n";
                     String str = Environment.getExternalStorageDirectory() + File.separator + "Group6.txt";
                     File file = new File(str);//创建一个文件
-
-
                     String date=sdf.format(new Date());//时间
+                        
                     try{
                         if(!file.exists()){
                             file.createNewFile();
@@ -146,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
                     } catch (IOException e){
                         e.printStackTrace();
                     }
+                        
                     }
                     x = x + xacc + "\n";
                     y = y + yacc + "\n";
