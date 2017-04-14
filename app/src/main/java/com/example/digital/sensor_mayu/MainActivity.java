@@ -104,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-
     private SensorEventListener sensorEventListener = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent event_lin) {
@@ -114,12 +113,8 @@ public class MainActivity extends AppCompatActivity {
                 String x = "x acc:" ;
                 String y = "y acc:";
                 String z = "z acc:";
-                
-                String x2 = "x acc:" ;
-                String y2 = "y acc:";
-                String z2 = "z acc:";
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
 
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
                 btnstop.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -139,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                         float a = xacc*xacc + yacc*yacc + zacc*zacc;
                         double b = Math.sqrt(a);
                         String c = b + "\n";
-                        tvshow.setText(linacc + x + y + z + "\n" + c);
+                        tvshow.setText(linacc + x + y + z + "\n" + c);      // display
 
                         //store data
                         String str = Environment.getExternalStorageDirectory() + File.separator + "Group6.txt";
@@ -160,10 +155,8 @@ public class MainActivity extends AppCompatActivity {
                         } catch (IOException e){
                             e.printStackTrace();
                         }
-
                     }
                 }
-
              }
 
             @Override
@@ -172,7 +165,9 @@ public class MainActivity extends AppCompatActivity {
 
         };
 
-    /*************    Running  part off   **************/
+    /*************＊     Running  part off    **************/
+
+
 
 
     @Override
