@@ -30,10 +30,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean st = false;      // st == true --> work，boolean variable of the left button
     public boolean ps = false;      // ps == true ---> stop,，boolean variable of the right button
 
-    public float xacc = 0;
-    public float yacc = 0;
-    public float zacc = 0;
-
+    public float xacc1 = 0;
+    public float yacc1 = 0;
+    public float zacc1 = 0;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,16 +125,23 @@ public class MainActivity extends AppCompatActivity {
                 if(event_lin.sensor == null)    return;
                 if(event_lin.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
                     if(!ps){        // "!ps" means "working"
-                        xacc = event_lin.values[0];     // 更新数据
-                        yacc = event_lin.values[1];
-                        zacc = event_lin.values[2];
+                        xacc1 = event_lin.values[0];     // 更新数据
+                        yacc1 = event_lin.values[1];
+                        zacc1 = event_lin.values[2];
+
+                        float xacc = (float)(Math.round(xacc1*1000))/1000;
+                        float yacc = (float)(Math.round(yacc1*1000))/1000;
+                        float zacc = (float)(Math.round(zacc1*1000))/1000;
+
                         x = x + xacc + "\n";
                         y = y + yacc + "\n";
                         z = z + zacc + "\n";
                         float a = xacc*xacc + yacc*yacc + zacc*zacc;
                         double b = Math.sqrt(a);
-                        String c = b + "\n";
-                        tvshow.setText(linacc + x + y + z + "\n" + c);      // display
+                        float c = (float)(Math.round(b*1000))/1000;
+                        String d = c + "\n";
+                        tvshow.setText(linacc + x + y + z + "\n" + d);      // display
+
 
                         //store data
                         String str = Environment.getExternalStorageDirectory() + File.separator + "Group6.txt";
@@ -149,7 +156,8 @@ public class MainActivity extends AppCompatActivity {
                             fw.write(date + "\n");
                             fw.write(x);
                             fw.write(y);
-                            fw.write(z + "\n");
+                            fw.write(z);
+                            fw.write(d + "\n");
                             fw.flush();
                             fw.close();
                         } catch (IOException e){
